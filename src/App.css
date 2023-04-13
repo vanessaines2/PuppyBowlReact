@@ -4,7 +4,16 @@
   padding: 2rem;
   text-align: center;
 }
-
+.puppyLayout {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-between;
+}
+body {
+  display: flex;
+  flex-direction: row;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
