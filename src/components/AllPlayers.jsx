@@ -2,10 +2,10 @@ import App from "../App";
 import { useState, useEffect } from "react";
 import "../App.css";
 import NewPlayerForm from "./NewPlayerForm";
-
+import { deletePuppy } from "../ajaxHelpers";
 export const cohortName = "2301-FTB-ET-WEB-AM";
 
-function FetchAllPlayers() {
+function AllPlayers() {
   // useState = empty array???
   const [puppyData, setPuppyData] = useState([]);
   useEffect(() => {
@@ -36,10 +36,29 @@ function FetchAllPlayers() {
             <h2>{puppy.name}</h2>
             <h3>#{puppy.id}</h3>
             <span>
-              <img src={puppy.imageUrl} alt="puppyPic"></img>
+              <img src={puppy.imageUrl} alt=""></img>
             </span>
             <button onClick={() => {}}>See Doggy Details</button>
-            <button>Delete Puppy</button>
+            <button
+              onClick={async () => {
+                await deletePuppy(puppy.id);
+                try {
+                  const response = await fetch(
+                    `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`
+                  );
+                  // const result = await response.json();
+                  //data: {players: []}
+                  const { data } = await response.json();
+                  const { players } = data;
+                  setPuppyData(players);
+                  console.log(players);
+                } catch (err) {
+                  console.log(err);
+                }
+              }}
+            >
+              Delete Puppy
+            </button>
             <span>
               <p>{puppy.breed}</p>
               <p>{puppy.status}</p>
@@ -52,4 +71,4 @@ function FetchAllPlayers() {
   );
 }
 
-export default FetchAllPlayers;
+export default AllPlayers;

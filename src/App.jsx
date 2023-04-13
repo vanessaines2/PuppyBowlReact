@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import NewPlayerForm from "./components/NewPlayerForm";
-import FetchAllPlayers from "./components/AllPlayers";
+import AllPlayers from "./components/AllPlayers";
+import FetchSinglePup from "./components/SinglePuppy";
 
 //url = https://fsa-puppy-bowl.herokuapp.com/api/2301-ftb-et-web-am/players
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <FetchAllPlayers />
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <AllPlayers />
+    </div>
   );
 }
 
