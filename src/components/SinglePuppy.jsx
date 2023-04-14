@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { cohortName } from "./AllPlayers";
+import { useParams } from "react-router-dom";
 
-function SinglePup() {
+function SinglePuppy() {
+  const { dogId } = useParams();
   const [singlePup, setSinglePup] = useState(null);
   useEffect(() => {
     async function getDog() {
@@ -19,7 +21,12 @@ function SinglePup() {
     }
     getDog();
   }, []);
-  return <h2>{singlePup.name}</h2>;
+  return (
+    <span>
+      <p>{puppy.breed}</p>
+      <p>{puppy.status}</p>
+    </span>
+  );
 }
 
-export default SinglePup;
+export default SinglePuppy;
