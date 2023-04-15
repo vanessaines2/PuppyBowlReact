@@ -5,6 +5,7 @@ import NewPlayerForm from "./NewPlayerForm";
 import { deletePuppy } from "../ajaxHelpers";
 export const cohortName = "2301-FTB-ET-WEB-AM";
 import SinglePuppy from "./SinglePuppy";
+import { Link } from "react-router-dom";
 
 function AllPlayers() {
   // useState = empty array???
@@ -44,7 +45,7 @@ function AllPlayers() {
               ></img>
             </div>
             <div>
-              <button onClick={() => {}}>See Doggy Details</button>
+              <Link to={`/${puppy.id}`}> See Dog Details</Link>
               <button
                 onClick={async () => {
                   await deletePuppy(puppy.id);

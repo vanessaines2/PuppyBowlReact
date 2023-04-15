@@ -6,12 +6,12 @@
 }
 .puppyLayout {
   display: flex;
-  flex-direction: row;
-  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 body {
   display: flex;
-  flex-direction: row;
+  place-items: center;
 }
 .logo {
   height: 6em;
